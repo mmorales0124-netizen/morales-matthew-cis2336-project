@@ -1,0 +1,94 @@
+/* =========================================================
+   ArtConnect — faq.css
+   Extends style.css. Handles the expand/collapse accordion.
+   ========================================================= */
+
+.page-header .section-title {
+  color: #ffffff;
+}
+
+.faq-list {
+  max-width: 780px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.faq-item {
+  border: 1px solid rgba(228,226,235,0.14);
+  background: var(--void-2);
+  transition: border-color 0.25s ease;
+}
+
+.faq-item.open {
+  border-color: var(--ether);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.35rem 1.6rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--fog);
+}
+
+.faq-question:hover .faq-q-text,
+.faq-question:focus-visible .faq-q-text {
+  color: var(--ether);
+}
+
+.faq-q-text { transition: color 0.2s ease; }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(228,226,235,0.3);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--fog-dim);
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  border-color: var(--oxblood-bright);
+  color: var(--oxblood-bright);
+}
+
+.faq-answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer {
+  padding: 0 1.6rem 1.5rem;
+  color: var(--fog-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+.faq-toolbar {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.faq-toolbar .btn { font-size: 0.65rem; padding: 0.6rem 1.2rem; }

@@ -1,0 +1,288 @@
+/* =========================================================
+   ArtConnect — events.css
+   Extends style.css. Handles: event cards + detail modal,
+   and the room booking form with validation states.
+   ========================================================= */
+
+/* ---------- event cards ---------- */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 720px) {
+  .event-grid { grid-template-columns: 1fr; }
+}
+
+.event-card {
+  background: var(--void-2);
+  border: 1px solid rgba(228,226,235,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.event-card:hover, .event-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--ether);
+}
+
+.event-card-image {
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+  position: relative;
+}
+
+.event-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(25%) contrast(1.05) brightness(0.85);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.event-card:hover .event-card-image img,
+.event-card:focus-visible .event-card-image img {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(1.05) brightness(0.95);
+}
+
+.event-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,15,0) 40%, rgba(10,10,15,0.65) 100%);
+  pointer-events: none;
+}
+
+.event-card-body { padding: 1.4rem 1.5rem 1.6rem; text-align: center; }
+
+.event-card-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ether);
+  margin: 0 0 0.5rem;
+}
+
+.event-card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--fog);
+  margin: 0 0 0.4rem;
+}
+
+.event-card-loc {
+  color: var(--fog-dim);
+  font-size: 0.85rem;
+  margin: 0 0 0.9rem;
+}
+
+.event-card-hint {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(168,216,209,0.7);
+}
+
+/* ---------- event detail modal ---------- */
+.event-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  background: rgba(6,6,9,0.92);
+  backdrop-filter: blur(6px);
+}
+
+.event-modal.open { display: flex; }
+
+.event-modal-inner {
+  max-width: 560px;
+  width: 100%;
+  max-height: 86vh;
+  overflow-y: auto;
+  background: var(--void-2);
+  border: 1px solid rgba(168,216,209,0.25);
+  padding: 2.25rem;
+  position: relative;
+}
+
+.event-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid rgba(228,226,235,0.3);
+  color: var(--fog);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.event-modal-close:hover { border-color: var(--oxblood-bright); color: var(--oxblood-bright); }
+
+.event-modal-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+.event-modal-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ether);
+  margin: 0 0 0.5rem;
+}
+
+.event-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0 0 0.4rem;
+}
+
+.event-modal-loc {
+  color: var(--fog-dim);
+  font-size: 0.9rem;
+  margin: 0 0 1.25rem;
+}
+
+.event-modal-desc {
+  color: var(--fog-dim);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ---------- booking form ---------- */
+.booking-form {
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+}
+
+.form-row {
+  margin-bottom: 1.5rem;
+}
+
+.form-row label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+  margin-bottom: 0.5rem;
+}
+
+.form-row label .req { color: var(--oxblood-bright); }
+
+.form-control {
+  width: 100%;
+  background: var(--void-2);
+  border: 1px solid rgba(228,226,235,0.25);
+  color: var(--fog);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--ether);
+}
+
+.form-control.invalid {
+  border-color: var(--oxblood-bright);
+}
+
+textarea.form-control { resize: vertical; min-height: 90px; }
+
+.field-error {
+  display: none;
+  color: var(--oxblood-bright);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+}
+
+.field-error.show { display: block; }
+
+.room-capacity-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ether);
+  margin-top: 0.5rem;
+  min-height: 1em;
+}
+
+.form-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 560px) {
+  .form-two-col { grid-template-columns: 1fr; }
+}
+
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.form-submit-row .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid;
+  margin-top: 1.5rem;
+  display: none;
+}
+
+.form-status.show { display: block; }
+
+.form-status.success {
+  border-color: var(--ether);
+  color: var(--ether);
+  background: rgba(168,216,209,0.06);
+}
+
+.form-status.conflict {
+  border-color: var(--oxblood-bright);
+  color: var(--oxblood-bright);
+  background: rgba(107,15,30,0.08);
+}
+
+.backend-note {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--fog-dim);
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.75;
+}

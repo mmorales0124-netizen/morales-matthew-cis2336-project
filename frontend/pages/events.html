@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — ArtConnect</title>
+<meta name="description" content="Upcoming ArtConnect events, and room booking for exhibition space.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/events.css">
+</head>
+<body>
+
+<div class="fog-layer" aria-hidden="true"></div>
+
+<header>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="../index.html" class="brand">Art<span>Connect</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="submit.html">Submit Art</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <p class="section-label">What's Coming</p>
+    <h1 class="section-title" style="color:#ffffff;">Upcoming Events</h1>
+    <p class="section-lede">
+      Shows, listening rooms, and gatherings. Click any event for full details.
+    </p>
+  </section>
+
+  <!-- ============ EVENTS GRID ============ -->
+  <section>
+    <div class="section-inner">
+      <div class="event-grid">
+
+        <article class="event-card"
+          data-title="Nocturne: A Group Show"
+          data-date="August 14, 2026"
+          data-location="The Aftermath Gallery — Houston, TX"
+          data-description="A group exhibition bringing together six local artists working across collage, ink, and digital media. Doors open at 7PM with a short artist talk at 8PM. Light refreshments provided."
+          data-image="https://picsum.photos/seed/nocturne-show/800/450">
+          <div class="event-card-image"><img src="https://picsum.photos/seed/nocturne-show/800/450" alt="Nocturne: A Group Show event photo"></div>
+          <div class="event-card-body">
+            <p class="event-card-date">August 14, 2026</p>
+            <h3 class="event-card-title">Nocturne: A Group Show</h3>
+            <p class="event-card-loc">The Aftermath Gallery — Houston, TX</p>
+            <p class="event-card-hint">Click for details</p>
+          </div>
+        </article>
+
+        <article class="event-card"
+          data-title="Static & Silence Listening Room"
+          data-date="September 2, 2026"
+          data-location="Basement Level, The Hollow — Houston, TX"
+          data-description="An intimate listening session pairing ambient and shoegaze records with projected visual art. Seating is limited to 45 — arrive early. No phones, no talking, just the room."
+          data-image="https://picsum.photos/seed/static-silence/800/450">
+          <div class="event-card-image"><img src="https://picsum.photos/seed/static-silence/800/450" alt="Static and Silence Listening Room event photo"></div>
+          <div class="event-card-body">
+            <p class="event-card-date">September 2, 2026</p>
+            <h3 class="event-card-title">Static &amp; Silence Listening Room</h3>
+            <p class="event-card-loc">Basement Level, The Hollow — Houston, TX</p>
+            <p class="event-card-hint">Click for details</p>
+          </div>
+        </article>
+
+        <article class="event-card"
+          data-title="Vespers: An Ambient Night"
+          data-date="September 20, 2026"
+          data-location="Vantablack Studio — Houston, TX"
+          data-description="A late-night gathering of ambient musicians and visual artists sharing a small, dark room. Expect fog, candlelight, and a rotating slideshow of submitted artwork projected behind the performers."
+          data-image="https://picsum.photos/seed/vespers-ambient/800/450">
+          <div class="event-card-image"><img src="https://picsum.photos/seed/vespers-ambient/800/450" alt="Vespers: An Ambient Night event photo"></div>
+          <div class="event-card-body">
+            <p class="event-card-date">September 20, 2026</p>
+            <h3 class="event-card-title">Vespers: An Ambient Night</h3>
+            <p class="event-card-loc">Vantablack Studio — Houston, TX</p>
+            <p class="event-card-hint">Click for details</p>
+          </div>
+        </article>
+
+        <article class="event-card"
+          data-title="Bloodletting: Open Submission Show"
+          data-date="October 5, 2026"
+          data-location="The Drowned Room — Houston, TX"
+          data-description="Our first fully open-submission show — any ArtConnect member can hang a piece, no jury, no fee. A raw, unfiltered look at what the community is making right now."
+          data-image="https://picsum.photos/seed/bloodletting-show/800/450">
+          <div class="event-card-image"><img src="https://picsum.photos/seed/bloodletting-show/800/450" alt="Bloodletting: Open Submission Show event photo"></div>
+          <div class="event-card-body">
+            <p class="event-card-date">October 5, 2026</p>
+            <h3 class="event-card-title">Bloodletting: Open Submission Show</h3>
+            <p class="event-card-loc">The Drowned Room — Houston, TX</p>
+            <p class="event-card-hint">Click for details</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROOM BOOKING ============ -->
+  <section class="about">
+    <div class="section-inner">
+      <p class="section-label">Book a Room</p>
+      <h2 class="section-title">Reserve Exhibition Space</h2>
+      <p class="section-lede">
+        Booking one of our five spaces for a show, listening session, or private
+        event. Submitting this form sends a request only — it isn't a confirmed
+        booking yet.
+      </p>
+
+      <form class="booking-form" id="bookingForm" novalidate>
+
+        <div class="form-row">
+          <label for="bookName">Full Name <span class="req">*</span></label>
+          <input class="form-control" type="text" id="bookName" name="bookName" autocomplete="name">
+          <p class="field-error" id="bookNameError"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="bookEmail">Email Address <span class="req">*</span></label>
+          <input class="form-control" type="email" id="bookEmail" name="bookEmail" autocomplete="email">
+          <p class="field-error" id="bookEmailError"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="bookRoom">Room <span class="req">*</span></label>
+          <select class="form-control" id="bookRoom" name="bookRoom">
+            <option value="">Select a room…</option>
+            <option value="aftermath-main-hall">The Aftermath Gallery — Main Hall</option>
+            <option value="the-hollow-basement">The Hollow — Basement Listening Room</option>
+            <option value="vantablack-studio">Vantablack Studio</option>
+            <option value="the-drowned-room">The Drowned Room</option>
+            <option value="static-chapel">Static Chapel</option>
+          </select>
+          <p class="room-capacity-hint" id="roomCapacityHint"></p>
+          <p class="field-error" id="bookRoomError"></p>
+        </div>
+
+        <div class="form-two-col">
+          <div class="form-row">
+            <label for="bookDate">Date <span class="req">*</span></label>
+            <input class="form-control" type="date" id="bookDate" name="bookDate">
+            <p class="field-error" id="bookDateError"></p>
+          </div>
+
+          <div class="form-row">
+            <label for="bookTime">Time Slot <span class="req">*</span></label>
+            <select class="form-control" id="bookTime" name="bookTime">
+              <option value="">Select a time…</option>
+              <option value="morning">Morning — 9AM to 12PM</option>
+              <option value="afternoon">Afternoon — 1PM to 5PM</option>
+              <option value="evening">Evening — 6PM to 10PM</option>
+            </select>
+            <p class="field-error" id="bookTimeError"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="bookGuests">Expected Attendees <span class="req">*</span></label>
+          <input class="form-control" type="number" id="bookGuests" name="bookGuests" min="1" step="1">
+          <p class="field-error" id="bookGuestsError"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="bookNotes">Additional Notes</label>
+          <textarea class="form-control" id="bookNotes" name="bookNotes" placeholder="Anything we should know about your event?"></textarea>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn solid" id="bookingSubmit">Request Booking</button>
+        </div>
+
+        <p class="form-status" id="bookingStatus" role="alert"></p>
+      </form>
+
+      <p class="backend-note">
+        // Availability shown here is simulated for front-end development.
+        Real-time room availability will be verified by the backend in a future phase.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  ArtConnect — built by Matthew Morales Galdamez — CIS 2336
+</footer>
+
+<!-- ============ EVENT DETAIL MODAL ============ -->
+<div class="event-modal" id="eventModal" aria-hidden="true">
+  <div class="event-modal-inner">
+    <button class="event-modal-close" id="eventModalClose">Close ✕</button>
+    <img class="event-modal-image" id="eventModalImage" src="" alt="">
+    <p class="event-modal-date" id="eventModalDate"></p>
+    <h3 class="event-modal-title" id="eventModalTitle"></h3>
+    <p class="event-modal-loc" id="eventModalLoc"></p>
+    <p class="event-modal-desc" id="eventModalDesc"></p>
+  </div>
+</div>
+
+<script src="../js/script.js"></script>
+<script src="../js/events.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Art — ArtConnect</title>
+<meta name="description" content="Submit your artwork to be featured on ArtConnect.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/submit.css">
+</head>
+<body>
+
+<div class="fog-layer" aria-hidden="true"></div>
+
+<header>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="../index.html" class="brand">Art<span>Connect</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="submit.html">Submit Art</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <p class="section-label">For Artists</p>
+    <h1 class="section-title" style="color:#ffffff;">Submit Your Artwork</h1>
+    <p class="section-lede">
+      Tell us about the piece. Every field below is required unless marked
+      optional — this is a front-end demo, so nothing is saved to a server yet.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-inner">
+
+      <form class="submit-form" id="submitForm" novalidate>
+
+        <div class="form-row">
+          <label for="subName">Artist Name <span class="req">*</span></label>
+          <input class="form-control" type="text" id="subName" name="subName" autocomplete="name">
+          <p class="field-error" id="subNameError"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="subEmail">Email Address <span class="req">*</span></label>
+          <input class="form-control" type="email" id="subEmail" name="subEmail" autocomplete="email">
+          <p class="field-error" id="subEmailError"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="subTitle">Artwork Title <span class="req">*</span></label>
+          <input class="form-control" type="text" id="subTitle" name="subTitle">
+          <p class="field-error" id="subTitleError"></p>
+        </div>
+
+        <div class="form-two-col">
+          <div class="form-row">
+            <label for="subCategory">Category <span class="req">*</span></label>
+            <select class="form-control" id="subCategory" name="subCategory">
+              <option value="">Select a category…</option>
+              <option value="painting">Painting</option>
+              <option value="digital">Digital / Glitch</option>
+              <option value="photography">Photography</option>
+              <option value="mixed-media">Mixed Media</option>
+              <option value="illustration">Illustration</option>
+              <option value="sculpture">Sculpture</option>
+              <option value="abstract">Abstract</option>
+              <option value="other">Other</option>
+            </select>
+            <p class="field-error" id="subCategoryError"></p>
+          </div>
+
+          <div class="form-row">
+            <label for="subPrice">Price (USD) <span class="req">*</span></label>
+            <div class="price-row">
+              <input class="form-control" type="text" inputmode="decimal" id="subPrice" name="subPrice" placeholder="e.g. 150">
+              <label class="checkbox-line" for="subNotForSale">
+                <input type="checkbox" id="subNotForSale" name="subNotForSale">
+                Not for Sale
+              </label>
+            </div>
+            <p class="field-error" id="subPriceError"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="subDescription">Description <span class="req">*</span></label>
+          <textarea class="form-control" id="subDescription" name="subDescription" placeholder="What's the piece about? Medium, inspiration, anything a viewer should know."></textarea>
+          <p class="char-count" id="descCharCount">0 / 20 minimum characters</p>
+          <p class="field-error" id="subDescriptionError"></p>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn solid" id="submitBtn">Submit Artwork</button>
+        </div>
+
+        <p class="form-status" id="submitStatus" role="alert"></p>
+      </form>
+
+      <p class="backend-note">
+        // This form does not yet connect to a backend. Submissions are
+        validated in the browser only and nothing is saved or sent anywhere.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  ArtConnect — built by Matthew Morales Galdamez — CIS 2336
+</footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/submit.js"></script>
+</body>
+</html>

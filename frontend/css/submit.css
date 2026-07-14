@@ -1,0 +1,166 @@
+/* =========================================================
+   ArtConnect — submit.css
+   Extends style.css. Self-contained form styling for the
+   Artist Submission page.
+   ========================================================= */
+
+.submit-form {
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+}
+
+.form-row {
+  margin-bottom: 1.5rem;
+}
+
+.form-row label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+  margin-bottom: 0.5rem;
+}
+
+.form-row label .req { color: var(--oxblood-bright); }
+
+.form-control {
+  width: 100%;
+  background: var(--void-2);
+  border: 1px solid rgba(228,226,235,0.25);
+  color: var(--fog);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--ether);
+}
+
+.form-control.invalid {
+  border-color: var(--oxblood-bright);
+}
+
+.form-control:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+textarea.form-control { resize: vertical; min-height: 130px; }
+
+.field-error {
+  display: none;
+  color: var(--oxblood-bright);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+}
+
+.field-error.show { display: block; }
+
+.field-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--fog-dim);
+  margin-top: 0.5rem;
+}
+
+.form-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 560px) {
+  .form-two-col { grid-template-columns: 1fr; }
+}
+
+/* ---------- price row + not-for-sale checkbox ---------- */
+.price-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.price-row .form-control { flex: 1; }
+
+.checkbox-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+  white-space: nowrap;
+  padding-top: 0.9rem;
+}
+
+.checkbox-line input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--oxblood-bright);
+}
+
+/* ---------- description char count ---------- */
+.char-count {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--fog-dim);
+  text-align: right;
+  margin-top: 0.4rem;
+}
+
+.char-count.low { color: var(--oxblood-bright); }
+
+/* ---------- submit + status ---------- */
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.form-submit-row .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid;
+  margin-top: 1.5rem;
+  display: none;
+  line-height: 1.6;
+}
+
+.form-status.show { display: block; }
+
+.form-status.success {
+  border-color: var(--ether);
+  color: var(--ether);
+  background: rgba(168,216,209,0.06);
+}
+
+.form-status.error {
+  border-color: var(--oxblood-bright);
+  color: var(--oxblood-bright);
+  background: rgba(107,15,30,0.08);
+}
+
+.backend-note {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--fog-dim);
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.75;
+}

@@ -135,6 +135,151 @@ This is a static front-end project — no build tools, package installs, or serv
 - Artwork images displayed in the Gallery are real, copyrighted works used for a non-commercial school project with attribution (see [References](frontend/pages/references.html)) — they are not original submissions and are not for sale.
 
 ---
+# ArtConnect Backend
+
+The backend phase of the ArtConnect project (CIS 2336). A lightweight Express server that receives artist submissions from the frontend's Submit Art page, validates them, and stores them temporarily in memory.
+
+## Tech Stack
+
+- **Node.js** — JavaScript runtime
+- **Express** — web server / routing framework
+- **CORS** — allows the frontend (served from a different origin/port) to make requests to this backend
+- **In-memory storage** — a plain JavaScript array; no database yet. Data resets whenever the server restarts.
+
+## Project Structure
+
+```
+backend/
+├── server.js           # entry point — sets up Express, CORS, and mounts routes
+├── routes/
+│   └── artworks.js     # /api/artworks endpoints: validation, storage, responses
+├── package.json
+├── package-lock.json
+└── node_modules/
+```
+
+## Getting Started
+
+1. Navigate into the backend folder:
+   ```
+   cd backend
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the server:
+   ```
+   npm start
+   ```
+4. You should see:
+   ```
+   Server listening at http://localhost:3000
+   ```
+
+The server runs on **port 3000** by default.
+
+## API Endpoints
+
+### `GET /`
+Health check. Confirms the server is running.
+
+**Response:**
+```
+ArtConnect backend is running.
+```
+
+### `GET /api/artworks`
+Returns every artwork submitted so far.
+
+**Response:**
+```json
+{
+  "success": true,
+  "count": 1,
+  "artworks": [
+    {
+      "id": 1,
+      "name": "Jamie Rivera",
+      "email": "jamie@example.com",
+      "title": "Cold Visions",
+      "category": "painting",
+      "notForSale": false,
+      "price": 150,
+      "description": "A moody acrylic piece exploring isolation and color.",
+      "submittedAt": "2026-08-18T00:00:16.071Z"
+    }
+  ]
+}
+```
+
+### `POST /api/artworks`
+Submits a new artwork. Matches the fields collected by the frontend's Submit Art form (`submit.js`).
+
+**Request body:**
+```json
+{
+  "name": "Jamie Rivera",
+  "email": "jamie@example.com",
+  "title": "Cold Visions",
+  "category": "painting",
+  "price": 150,
+  "notForSale": false,
+  "description": "A moody acrylic piece exploring isolation and color."
+}
+```
+
+**Field notes:**
+- `name`, `title`, `category`, `description` — required strings
+- `email` — required, must be a valid email format
+- `description` — must be at least 20 characters
+- `price` — required and must be greater than 0, unless `notForSale` is `true`
+- `notForSale` — optional boolean; when `true`, `price` is not required and is stored as `null`
+
+**Success response (201):**
+```json
+{
+  "success": true,
+  "message": "Thanks, Jamie Rivera — \"Cold Visions\" was received.",
+  "artwork": { "id": 1, "...": "..." }
+}
+```
+
+**Validation error response (400):**
+```json
+{
+  "success": false,
+  "errors": [
+    "A valid email address is required.",
+    "Description must be at least 20 characters."
+  ]
+}
+```
+
+## Testing the API Manually
+
+With the server running, in a **separate terminal**:
+
+```
+curl http://localhost:3000/api/artworks
+```
+
+```
+curl -X POST http://localhost:3000/api/artworks -H "Content-Type: application/json" -d "{\"name\":\"Jamie Rivera\",\"email\":\"jamie@example.com\",\"title\":\"Cold Visions\",\"category\":\"painting\",\"price\":150,\"description\":\"A moody acrylic piece exploring isolation and color.\"}"
+```
+
+## Known Limitations
+
+- **No database** — all submissions are stored in a JavaScript array in server memory. Restarting the server clears all data.
+- **Not yet connected to the frontend** — the Submit Art page (`submit.js`) still shows a mocked success message locally rather than calling this API.
+- **No authentication** — anyone with the endpoint URL can submit or view all artworks.
+- **CORS is fully open** — configured to accept requests from any origin during development; this should be restricted before any real deployment.
+
+## Planned Next Steps
+
+- Connect the frontend Submit Art form to `POST /api/artworks`
+- Replace in-memory storage with a real database
+- Add endpoints for the Events page's room booking system
 
 ## AI Usage Disclosure
 

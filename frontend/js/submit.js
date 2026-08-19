@@ -142,25 +142,45 @@ document.addEventListener('DOMContentLoaded', () => {
       firstInvalid.focus();
       return;
     }
-
+    
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting…';
 
-    // No backend yet — simulate a brief processing delay, then confirm.
-    setTimeout(() => {
-      const priceText = notForSale.checked ? 'Not for Sale' : `$${Number(fields.price.value).toFixed(2)}`;
-      showStatus(
-        'success',
-        `Thanks, ${fields.name.value.trim()} — "${fields.title.value.trim()}" (${priceText}) has been received. This is a front-end demo only: nothing was actually saved. The backend will handle real submissions in a future phase.`
-      );
-      form.reset();
-      fields.price.disabled = false;
-      charCount.textContent = `0 / ${MIN_DESCRIPTION_LENGTH} minimum characters`;
-      charCount.classList.remove('low');
+    // Send the submission to the real backend.
+    const payload = {
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      title: fields.title.value.trim(),
+      category: fields.category.value,
+      notForSale: notForSale.checked,
+      price: notForSale.checked ? null : Number(fields.price.value),
+      description: fields.description.value.trim(),
+    };
 
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit Artwork';
-    }, 600);
+    fetch('http://localhost:3000/api/artworks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json().then((data) => ({ ok: response.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) {
+          throw new Error(data.errors ? data.errors.join(' ') : 'Submission failed.');
+        }
+
+        showStatus('success', data.message);
+        form.reset();
+        fields.price.disabled = false;
+        charCount.textContent = `0 / ${MIN_DESCRIPTION_LENGTH} minimum characters`;
+        charCount.classList.remove('low');
+      })
+      .catch((error) => {
+        showStatus('error', `Something went wrong: ${error.message}`);
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Artwork';
+      });
   });
 
   // clear individual field errors as the user fixes them

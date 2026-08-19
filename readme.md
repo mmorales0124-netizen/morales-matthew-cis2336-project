@@ -47,7 +47,7 @@ This project was built as the front-end phase of a two-part assignment for **CIS
 - **Homepage** — hero section with a glitching wordmark, welcome message, ArtConnect description, featured artwork, featured events, and developer contact info.
 - **Gallery** — six credited artworks (image, title, artist, category, price/"Not for Sale") in a responsive 3-column grid, with a full click-to-enlarge lightbox (keyboard-navigable, with prev/next), plus an embedded YouTube video.
 - **Events** — four upcoming events with a click-to-expand detail modal populated dynamically via JavaScript, and a 5-room booking form with full client-side validation and a mocked availability check.
-- **Artist Submission** — a form for submitting artwork info (name, email, title, category, price, description) with full client-side validation; not yet connected to a backend.
+- **Artist Submission** — a form for submitting artwork info (name, email, title, category, price, description) with full client-side validation, connected to a real backend endpoint that stores submissions and returns a confirmation message.
 - **FAQ** — six expandable/collapsible questions with an accessible accordion, plus "Expand All" / "Collapse All" controls.
 - **References** — documents every image source, multimedia source, external resource, and AI prompt used during development.
 
@@ -123,14 +123,14 @@ This is a static front-end project — no build tools, package installs, or serv
 - **Browsing the gallery:** click any artwork to open it full-size in a lightbox. Use the on-screen arrows, your keyboard's arrow keys, or \`Esc\` to navigate/close.
 - **Viewing events:** click any event card to see its full description in a modal.
 - **Booking a room:** fill out the booking form on the Events page. All fields are validated client-side; a mocked availability check will occasionally flag a slot as already booked, to demonstrate what a real backend response would look like.
-- **Submitting artwork:** fill out the form on the Submit Art page. Check "Not for Sale" if the piece isn't priced. On successful validation you'll see a confirmation message — no data is actually saved anywhere yet.
+- **Submitting artwork:** fill out the form on the Submit Art page. Check "Not for Sale" if the piece isn't priced. On successful validation, the form sends the data to the backend, which stores it and returns a real confirmation message.
 - **FAQ:** click any question to expand its answer, or use "Expand All" / "Collapse All."
 
 ---
 
 ## Known Limitations
 
-- The Artist Submission form and Room Booking form do **not** connect to a real backend yet — both are front-end validation demos only, per the current assignment phase.
+- The Room Booking form uses simulated, client-side-only validation. Connecting it to a backend was outside the scope of this project's backend requirement, which covers artwork submissions only.
 - Room availability on the Events page is simulated using a hardcoded JavaScript object, not real data.
 - Artwork images displayed in the Gallery are real, copyrighted works used for a non-commercial school project with attribution (see [References](frontend/pages/references.html)) — they are not original submissions and are not for sale.
 
@@ -273,7 +273,6 @@ curl -X POST http://localhost:3000/api/artworks -H "Content-Type: application/js
 ## Known Limitations
 
 - **No database** — all submissions are stored in a JavaScript array in server memory. Restarting the server clears all data.
-- **Not yet connected to the frontend** — the Submit Art page (\`submit.js\`) still shows a mocked success message locally rather than calling this API.
 - **No authentication** — anyone with the endpoint URL can submit or view all artworks.
 - **CORS is fully open** — configured to accept requests from any origin during development; this should be restricted before any real deployment.
 

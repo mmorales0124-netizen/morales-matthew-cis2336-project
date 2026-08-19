@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,15 +51,15 @@
         <ul class="ref-list">
           <li class="ref-item">
             <p class="ref-item-title">"Cold Visions" — Album cover art</p>
-            <p class="ref-item-detail">Artist: Ville Nordström (Bladee). Used on the Gallery page as a "Not for Sale" featured piece.</p>
+            <p class="ref-item-detail">Artist: Ville Nordström (Bladee). Used on the Gallery page as a "Not for Sale" featured piece, and featured on the Homepage.</p>
           </li>
           <li class="ref-item">
             <p class="ref-item-title">Untitled — Painting</p>
-            <p class="ref-item-detail">Artist: Bladee x Varg2tm. Abstract mixed-media piece featuring repeated mask-like faces.</p>
+            <p class="ref-item-detail">Artist: Bladee x Varg2tm. Abstract mixed-media piece featuring repeated mask-like faces. Also featured on the Homepage.</p>
           </li>
           <li class="ref-item">
             <p class="ref-item-title">"Loveless" — Album cover photography</p>
-            <p class="ref-item-detail">Photography: Angus Cameron. Album: My Bloody Valentine, <em>Loveless</em>, Creation Records, 1991.</p>
+            <p class="ref-item-detail">Photography: Angus Cameron. Album: My Bloody Valentine, <em>Loveless</em>, Creation Records, 1991. Also featured on the Homepage.</p>
           </li>
           <li class="ref-item">
             <p class="ref-item-title">"E" — Poster artwork</p>
@@ -105,7 +104,7 @@
       <div class="ref-block">
         <h2 class="ref-block-title">External Resources Used</h2>
         <p class="ref-block-note">
-          Fonts and tools used to build the site's front end.
+          Fonts and tools used to build the site's front end and back end.
         </p>
         <ul class="ref-list">
           <li class="ref-item">
@@ -122,11 +121,23 @@
           </li>
           <li class="ref-item">
             <p class="ref-item-title">Vanilla JavaScript</p>
-            <p class="ref-item-detail">No external JavaScript libraries or frameworks were used. All interactivity (nav toggle, gallery lightbox, FAQ accordion, event modal, booking form validation) is hand-written JS.</p>
+            <p class="ref-item-detail">No external JavaScript libraries or frameworks were used on the front end. All interactivity (nav toggle, gallery lightbox, FAQ accordion, event modal, booking form validation, submission form) is hand-written JS.</p>
           </li>
           <li class="ref-item">
             <p class="ref-item-title">Lorem Picsum</p>
             <p class="ref-item-detail">Free, royalty-free random stock photography used for event images on the Events page. <a href="https://picsum.photos" target="_blank" rel="noopener">picsum.photos</a></p>
+          </li>
+          <li class="ref-item">
+            <p class="ref-item-title">Node.js</p>
+            <p class="ref-item-detail">JavaScript runtime used to build the backend server. <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></p>
+          </li>
+          <li class="ref-item">
+            <p class="ref-item-title">Express</p>
+            <p class="ref-item-detail">Web framework used to build the backend's routing and request handling. <a href="https://expressjs.com" target="_blank" rel="noopener">expressjs.com</a></p>
+          </li>
+          <li class="ref-item">
+            <p class="ref-item-title">CORS (npm package)</p>
+            <p class="ref-item-detail">Middleware used to allow the frontend to make requests to the backend during local development. <a href="https://www.npmjs.com/package/cors" target="_blank" rel="noopener">npmjs.com/package/cors</a></p>
           </li>
         </ul>
       </div>
@@ -139,9 +150,9 @@
       <div class="ref-block" style="margin-bottom:0;">
         <h2 class="ref-block-title">AI Prompts Used During Development</h2>
         <p class="ref-block-note">
-          Claude (Anthropic) was used to help design and code the front end.
-          The prompts below summarize the requests made during development, in
-          the order they were given.
+          Claude (Anthropic) was used to help design and code the front end and
+          back end. The prompts below summarize the requests made during
+          development, in the order they were given.
         </p>
         <div class="prompt-log">
           <div class="prompt-entry">
@@ -203,6 +214,30 @@
           <div class="prompt-entry">
             <p class="p-label">Prompt 15 — Artist Submission page</p>
             <p class="p-text">"Create a form that allows artists to submit artwork information: Artist Name, Email Address, Artwork Title, Category, Price, Description. Implement client-side validation for all required fields (empty-field, email, numeric, error messages). Form should not yet connect to the backend."</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 16 — Backend setup</p>
+            <p class="p-text">"Set up a backend service using Node.js and Express. Handle GET and POST requests. Process artwork submission form data. Store submitted artwork information temporarily in a JavaScript object or array on the backend. Return a confirmation message after successful submission." — requested step by step, with questions asked before each stage of building.</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 17 — Backend route creation</p>
+            <p class="p-text">"So first create those files for the backend?" — requested creation of the /api/artworks route with validation, in-memory storage, and confirmation responses.</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 18 — Backend documentation</p>
+            <p class="p-text">"For my readme can you documentation for the backend" — requested backend documentation (tech stack, endpoints, setup steps) merged into the existing project README.</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 19 — Frontend/backend integration</p>
+            <p class="p-text">"Now help me to integrate the backend to the frontend go step by step dont do it all once start at step one and ask me each time should i keep going" — requested connecting the Submit Art form (submit.js) to the real backend endpoint via fetch, one step at a time.</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 20 — Homepage artwork fix</p>
+            <p class="p-text">"Can you fix this weeks upload the artwork image placeholder just put images i put from their gallery and description any random 3" — requested replacing the placeholder Featured Artwork cards on the Homepage with real images and info from the Gallery page.</p>
+          </div>
+          <div class="prompt-entry">
+            <p class="p-label">Prompt 21 — References update</p>
+            <p class="p-text">"Can you add my AI prompts that i havent added yet" — requested this updated prompt log covering the backend and homepage work.</p>
           </div>
         </div>
       </div>
